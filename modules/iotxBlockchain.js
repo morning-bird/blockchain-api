@@ -1,4 +1,5 @@
 const { ethers } = require("ethers")
+console.log(process.env.LOCAL_RPC)
 const provider = new ethers.providers.JsonRpcProvider(process.env.LOCAL_RPC)
 
 const getBalance = async () => {
