@@ -1,5 +1,6 @@
 const express = require('express')
 const iotx = require("./modules/iotxBlockchain")
+require('dotenv').config()
 const app = express()
 const port = 7000
 

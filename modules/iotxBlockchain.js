@@ -1,8 +1,8 @@
 const { ethers } = require("ethers")
-const provider = new ethers.providers.JsonRpcProvider("http://localhost:15014")
+const provider = new ethers.providers.JsonRpcProvider(process.env.LOCAL_RPC)
 
 const getBalance = async () => {
-    const balance = await provider.getBalance("0xd1a5702a89bfe9257d303f4e7aca2f879af6af85")
+    const balance = await provider.getBalance(process.env.WALLET_ADDRESS)
     return ethers.utils.formatEther(balance)
 }
 
@@ -19,7 +19,7 @@ const getBlockHeight = async (rpc = "") => {
 
 const isBlockHeightSynced = async () => {
     const localRPCBlockHeight = await getBlockHeight()
-    const publicRPCBlockHeight = await getBlockHeight("https://babel-api.mainnet.iotex.io")
+    const publicRPCBlockHeight = await getBlockHeight(process.env.PUBLIC_RPC)
     let isOkay = false
     if (localRPCBlockHeight == publicRPCBlockHeight || publicRPCBlockHeight - 3 < localRPCBlockHeight) {
         isOkay = true

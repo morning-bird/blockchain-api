@@ -1,3 +1,4 @@
+require('dotenv').config({ path: __dirname + "/../.env" })
 const iotx = require("./iotxBlockchain")
 
 describe('functions', () => {
